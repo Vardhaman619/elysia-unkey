@@ -2,14 +2,27 @@
   "name": "elysia-unkey",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build src/index.ts --minify-syntax --target bun --outdir ./dist",
+    "start": "NODE_ENV=production bun dist/index.js",
+    "test": "bun test",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "bun run src/db/seed.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/bearer": "^1.1.2",
+    "@faker-js/faker": "^9.1.0",
+    "@t3-oss/env-core": "^0.11.1",
+    "@unkey/api": "^0.26.2",
+    "drizzle-orm": "^0.35.3",
+    "elysia": "latest",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/bun": "^1.1.12",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.26.2"
   },
   "module": "src/index.js"
 }
